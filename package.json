@@ -1,0 +1,26 @@
+{
+  "name": "playcielapi",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Jamski55/playcielapi#readme",
+  "bugs": {
+    "url": "https://github.com/Jamski55/playcielapi/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jamski55/playcielapi.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.1"
+  }
+}
