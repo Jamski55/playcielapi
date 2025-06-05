@@ -1,0 +1,11 @@
+services:
+  playcielapi:
+    container_name: playcielapi
+    image: node:24-alpine
+    working_dir: /usr/src/app
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - "3000:3000"
+    command: >
+      sh -c "npm ci && npm run start"
