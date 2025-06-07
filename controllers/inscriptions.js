@@ -9,9 +9,22 @@ const postInscription = async (req, res) => {
     uid_badge_utilisateur: uidBadgeUtilisateur
   } = req.body;
 
-  const inscription = await inscriptionsModel.postInscription(1, nomUtilisateur, prenomUtilisateur, emailUtilisateur, mdpUtilisateur, uidBadgeUtilisateur);
+  try {
+    const inscription = await inscriptionsModel.postInscription(1, nomUtilisateur, prenomUtilisateur, emailUtilisateur, mdpUtilisateur, uidBadgeUtilisateur);
 
-  res.json(inscription);
+    console.log(inscription);
+    
+
+    if (!inscription) {
+      return res.status(400).json({ success: false, error: "Inscription échouée" });
+    }
+
+    res.json({ success: true, id_utilisateur: inscription.ID_UTILISATEUR});
+
+  } catch (error) {
+    console.error("Erreur lors de l'inscription :", error);
+    res.status(500).json({ success: false, error: "Erreur serveur" });
+  }
 };
 
 export { postInscription };
