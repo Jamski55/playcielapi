@@ -4,6 +4,7 @@ import badgesRouter from "./routes/badges.js";
 import inscriptionsRouter from "./routes/inscriptions.js";
 import jetonsRouter from "./routes/jetons.js";
 import participationsRouter from "./routes/participations.js";
+import utilisateursRouter from "./routes/utilisateurs.js";
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use('/api/badges', badgesRouter);
 app.use('/api/inscriptions', inscriptionsRouter);
 app.use('/api/jetons', jetonsRouter);
 app.use('/api/participations', participationsRouter);
+app.use('/api/utilisateurs', utilisateursRouter);
 
 const PORT = process.env.PORT || 3000;
 
