@@ -10,7 +10,7 @@ const postBadge = async (req, res) => {
   const { badge } = req.body;
 
   if (!badge) {
-    return res.status(400).json({ error: "Mode manquante" });
+    return res.status(400).json({ error: "UID badge manquant" });
   }
 
   currentBadge = badge;
