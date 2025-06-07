@@ -3,6 +3,8 @@ services:
     container_name: playcielapi
     image: node:24-alpine
     restart: unless-stopped
+    environment:
+      DB_HOST: playcieldb
     depends_on:
       - playcieldb
     working_dir: /usr/src/app
