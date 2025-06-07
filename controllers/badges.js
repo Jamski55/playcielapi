@@ -14,6 +14,11 @@ const postBadge = async (req, res) => {
   }
 
   currentBadge = badge;
+
+  setTimeout(() => {
+    currentBadge = "";
+  }, 10000);
+
   res.json({ "badge": currentBadge });
 };
 

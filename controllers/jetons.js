@@ -14,6 +14,11 @@ const postJeton = async (req, res) => {
   }
 
   currentJeton = jeton;
+
+  setTimeout(() => {
+    currentJeton = "";
+  }, 10000);
+
   res.json({ "jeton": currentJeton });
 };
 
