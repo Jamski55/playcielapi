@@ -3,7 +3,7 @@ let currentJeton = false;
 const getJeton = async (req, res) => {
   const jeton = currentJeton;
   currentJeton = false;
-  res.json(jeton);
+  res.json({ jeton });
 };
 
 const postJeton = async (req, res) => {
@@ -14,7 +14,7 @@ const postJeton = async (req, res) => {
   }
 
   currentJeton = jeton;
-  res.json(currentJeton);
+  res.json({ "jeton": currentJeton });
 };
 
 export { getJeton, postJeton };

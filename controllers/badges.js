@@ -3,7 +3,7 @@ let currentBadge = "";
 const getBadge = async (req, res) => {
   const badge = currentBadge;
   currentBadge = "";
-  res.json(badge);
+  res.json({ badge });
 };
 
 const postBadge = async (req, res) => {
@@ -14,7 +14,7 @@ const postBadge = async (req, res) => {
   }
 
   currentBadge = badge;
-  res.json(currentBadge);
+  res.json({ "badge": currentBadge });
 };
 
 export { getBadge, postBadge };
