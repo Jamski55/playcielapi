@@ -3,6 +3,7 @@ import express from "express";
 import badgesRouter from "./routes/badges.js";
 import inscriptionsRouter from "./routes/inscriptions.js";
 import jetonsRouter from "./routes/jetons.js";
+import participationsRouter from "./routes/participations.js";
 
 const app = express();
 
@@ -13,9 +14,10 @@ app.get('/', (req, res) => {
   res.send('PlayCiel API');
 });
 
-app.use('/badges', badgesRouter);
-app.use('/inscriptions', inscriptionsRouter);
-app.use('/jetons', jetonsRouter);
+app.use('/api/badges', badgesRouter);
+app.use('/api/inscriptions', inscriptionsRouter);
+app.use('/api/jetons', jetonsRouter);
+app.use('/api/participations', participationsRouter);
 
 const PORT = process.env.PORT || 3000;
 
