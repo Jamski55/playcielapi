@@ -1,6 +1,7 @@
 import cors from "cors";
 import express from "express";
 import badgesRouter from "./routes/badges.js";
+import inscriptionsRouter from "./routes/inscriptions.js";
 import jetonsRouter from "./routes/jetons.js";
 
 const app = express();
@@ -13,6 +14,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/badges', badgesRouter);
+app.use('/inscriptions', inscriptionsRouter);
 app.use('/jetons', jetonsRouter);
 
 const PORT = process.env.PORT || 3000;
