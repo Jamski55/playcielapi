@@ -2,10 +2,53 @@ services:
   playcielapi:
     container_name: playcielapi
     image: node:24-alpine
+    restart: unless-stopped
+    depends_on:
+      - playcieldb
     working_dir: /usr/src/app
     volumes:
       - ./:/usr/src/app
     ports:
       - "3000:3000"
+    networks:
+      - playcielnet
     command: >
       sh -c "npm ci && npm run start"
+
+  playcieldb:
+    container_name: playcieldb
+    image: mysql:9.3
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: BI
+      MYSQL_USER: playciel
+      MYSQL_PASSWORD: playciel
+    volumes:
+      - ./.data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3306:3306"
+    networks:
+      - playcielnet
+
+  playcielpma:
+    container_name: playcielpma
+    image: phpmyadmin
+    restart: unless-stopped
+    depends_on:
+      - playcieldb
+    ports:
+      - 8080:80
+    networks:
+      - playcielnet
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=playcieldb
+      - PMA_PORT=3306
+      - PMA_USER=playciel
+      - PMA_PASSWORD=playciel
+
+networks:
+  playcielnet:
+    name: playcielnet
